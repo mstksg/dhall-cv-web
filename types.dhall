@@ -1,0 +1,1 @@
+{ WebConfig = ./types/WebConfig.dhall }
