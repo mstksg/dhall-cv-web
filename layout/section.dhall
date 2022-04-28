@@ -20,13 +20,17 @@
 --
 -- snaker :: Text -> Text
 -- snaker = T.intercalate "-" . T.words . T.toLower
-let xml = (../prelude.dhall).xml
+let prelude = ../prelude.dhall
 
-let optional = (../prelude.dhall).optional
+let xml = prelude.xml
 
-let util = (../prelude.dhall).util
+let optional = prelude.optional
 
-let types = (../prelude.dhall).cv.types ∧ ../types.dhall
+let list = prelude.list
+
+let util = prelude.util
+
+let types = prelude.cv.types ∧ ../types.dhall
 
 in  λ(conf : types.WebConfig) →
     λ(sec : types.CVSection xml.Type) →
@@ -65,6 +69,26 @@ in  λ(conf : types.WebConfig) →
                               }
                         )
                         titleName
+                    )
+                , util.node
+                    "div"
+                    (Some "grid__col grid__col--7-of-8 cvsection-title")
+                    ( util.optionalList
+                        Text
+                        xml.Type
+                        ( λ(title : Text) →
+                            util.node "h3" (None Text) [ xml.text title ]
+                        )
+                        sec.title
+                    )
+                , util.node
+                    "div"
+                    (Some "cvsection-contents")
+                    ( list.map
+                        (types.CVCol xml.Type)
+                        xml.Type
+                        ./col.dhall
+                        sec.contents
                     )
                 ]
               }
