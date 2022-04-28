@@ -1,1 +1,3 @@
-{ WebConfig = ./types/WebConfig.dhall }
+{ WebConfig = ./types/WebConfig.dhall
+, RenderConfig = ./types/RenderConfig.dhall
+}

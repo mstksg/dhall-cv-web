@@ -51,8 +51,7 @@ let nodeId =
           }
 
 in  λ(conf : types.WebConfig) →
-    λ(img : Text) →
-    λ(css : List Text) →
+    λ(rconf : types.RenderConfig) →
     λ(body : List xml.Type) →
         util.node
           "html"
@@ -85,7 +84,7 @@ in  λ(conf : types.WebConfig) →
                       , content = [] : List xml.Type
                       }
                   ]
-                # ./util/openGraphMetas.dhall conf img
+                # ./util/openGraphMetas.dhall conf rconf.photoImport
                 # list.map
                     Text
                     xml.Type
@@ -100,7 +99,7 @@ in  λ(conf : types.WebConfig) →
                           , content = [] : List xml.Type
                           }
                     )
-                    css
+                    rconf.cssImports
               )
           , util.node
               "body"
