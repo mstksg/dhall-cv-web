@@ -59,9 +59,8 @@ in  λ(conf : types.WebConfig) →
           [ util.node
               "head"
               (None Text)
-              (   util.optionalListMany
+              (   util.optionalListManyXML
                     Text
-                    xml.Type
                     ./util/googleAnalytics.dhall
                     conf.googleAnalytics
                 # [ util.meta "title" conf.name

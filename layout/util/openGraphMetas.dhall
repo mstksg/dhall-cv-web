@@ -88,8 +88,7 @@ in  λ(conf : types.WebConfig) →
               , url = conf.hostBase
               }
           )
-      # util.optionalListMany
+      # util.optionalListManyXML
           Text
-          xml.Type
           (λ(t : Text) → [ twitterMeta "site" t, twitterMeta "creator" t ])
           conf.twitter

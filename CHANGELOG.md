@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.2.0
+------
+
+*April 29, 2022*
+
+*   Add blank text in empty divs to prevent xml self-closing tags.
+
 v1.1.0
 ------
 

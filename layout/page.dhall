@@ -22,9 +22,8 @@ in  λ(conf : types.WebConfig) →
             "header"
             (Some "grid__col grid__col--6-of-6")
             (   [ util.node "h1" (None Text) [ xml.text page.title ] ]
-              # util.optionalList
+              # util.optionalListXML
                   Text
-                  xml.Type
                   ( λ(subtitle : Text) →
                       util.node "h2" (None Text) [ xml.text subtitle ]
                   )

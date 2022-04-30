@@ -43,6 +43,16 @@ let util =
           λ(f : a → List b) →
           λ(o : Optional a) →
             merge { Some = λ(x : a) → f x, None = [] : List b } o
+      , optionalListXML =
+          λ(a : Type) →
+          λ(f : a → xml.Type) →
+          λ(o : Optional a) →
+            merge { Some = λ(x : a) → [ f x ], None = [ xml.rawText " " ] } o
+      , optionalListManyXML =
+          λ(a : Type) →
+          λ(f : a → List xml.Type) →
+          λ(o : Optional a) →
+            merge { Some = λ(x : a) → f x, None = [ xml.rawText " " ] } o
       , snaker = λ(t : Text) → text.lowerASCII (Text/replace " " "-" t)
       }
 

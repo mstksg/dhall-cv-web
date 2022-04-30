@@ -23,9 +23,8 @@ let function = (../prelude.dhall).function
 
 let optionalSpan =
       λ(c : Text) →
-        util.optionalList
+        util.optionalListXML
           Text
-          xml.Type
           ( λ(t : Text) →
               util.node "span" (Some ("cventry-" ++ c)) [ xml.text t ]
           )
@@ -46,11 +45,6 @@ in  λ(e : types.CVEntry xml.Type) →
         , util.node
             "div"
             (Some "cventry-body")
-            ( util.optionalList
-                xml.Type
-                xml.Type
-                (function.identity xml.Type)
-                e.body
-            )
+            (util.optionalListXML xml.Type (function.identity xml.Type) e.body)
         ]
       : List xml.Type

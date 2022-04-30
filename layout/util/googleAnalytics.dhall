@@ -23,19 +23,21 @@ let util = prelude.util
 in  λ(aId : Text) →
         [ xml.element
             { name = "script"
-            , attributes = [ xml.attribute "async" "" ]
+            , attributes = toMap { async = "" }
             , content = [] : List xml.Type
             }
-        , util.node
-            "script"
-            (None Text)
-            [ xml.text
-                ''
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', ${aId});
-                ''
-            ]
+        , xml.element
+            { name = "script"
+            , attributes = xml.emptyAttributes
+            , content =
+              [ xml.text
+                  ''
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', ${aId});
+                  ''
+              ]
+            }
         ]
       : List xml.Type

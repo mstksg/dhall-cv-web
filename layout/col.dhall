@@ -22,9 +22,8 @@ in  λ(c : types.CVCol xml.Type) →
           [ util.node
               "div"
               (Some "grid__col grid__col--1-of-8 cvline-desc")
-              ( util.optionalList
+              ( util.optionalListXML
                   Text
-                  xml.Type
                   ( λ(desc : Text) →
                       util.node "h4" (None Text) [ xml.text desc ]
                   )

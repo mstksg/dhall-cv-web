@@ -54,9 +54,8 @@ in  λ(conf : types.WebConfig) →
                 [ util.node
                     "div"
                     (Some "grid__col grid__col--1-of-8 cvsection-pretitle")
-                    ( util.optionalList
+                    ( util.optionalListXML
                         Text
-                        xml.Type
                         ( λ(title : Text) →
                             xml.element
                               { name = "a"
@@ -73,9 +72,8 @@ in  λ(conf : types.WebConfig) →
                 , util.node
                     "div"
                     (Some "grid__col grid__col--7-of-8 cvsection-title")
-                    ( util.optionalList
+                    ( util.optionalListXML
                         Text
-                        xml.Type
                         ( λ(title : Text) →
                             util.node "h3" (None Text) [ xml.text title ]
                         )
