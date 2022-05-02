@@ -23,7 +23,10 @@ let util = prelude.util
 in  λ(aId : Text) →
         [ xml.element
             { name = "script"
-            , attributes = toMap { async = "" }
+            , attributes = toMap
+                { async = ""
+                , src = "https://www.googletagmanager.com/gtag/js?id=" ++ aId
+                }
             , content = [] : List xml.Type
             }
         , xml.element

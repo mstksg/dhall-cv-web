@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v1.2.1
+------
+
+*May 1, 2022*
+
+*   Missing script link
+
+
 v1.2.0
 ------
 
